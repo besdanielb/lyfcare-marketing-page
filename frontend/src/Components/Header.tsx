@@ -11,9 +11,9 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import Logo from "./Logo";
 
-const pages = ["About Lyfcare", "Get on the waitlist"];
+const Header: React.FC<Props> = ({ scrollToPanel }) => {
+  const pages = ["About Lyfcare", "Get on the waitlist"];
 
-const Header: React.FC = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -22,15 +22,23 @@ const Header: React.FC = () => {
     setAnchorElNav(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(null);
+    scrollToPanel(event);
   };
 
   return (
     <AppBar position="sticky" color="inherit">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Logo sx={{ mr: 2, display: { xs: "none", md: "flex" } }} />
+          <Logo
+            scrollToPanel={scrollToPanel}
+            sx={{
+              mr: 2,
+              ml: { xs: 5, xl: 0 },
+              display: { xs: "none", md: "flex" },
+            }}
+          />
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -62,12 +70,17 @@ const Header: React.FC = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center" id={page}>
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <Logo sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }} />
+          <Logo
+            scrollToPanel={scrollToPanel}
+            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+          />
           <Box
             sx={{
               flexGrow: 1,
@@ -76,15 +89,17 @@ const Header: React.FC = () => {
             }}
           >
             <Button
+              id="about-us"
               key={pages[0]}
-              onClick={handleCloseNavMenu}
+              onClick={scrollToPanel}
               sx={{ my: 2, ml: 2, color: "black", display: "block" }}
             >
               {pages[0]}
             </Button>
             <Button
+              id="waitlist"
               key={pages[1]}
-              onClick={handleCloseNavMenu}
+              onClick={scrollToPanel}
               sx={{ my: 2, ml: 2, color: "purple", display: "block" }}
             >
               {pages[1]}
@@ -96,4 +111,7 @@ const Header: React.FC = () => {
   );
 };
 
+interface Props {
+  scrollToPanel: (event: any) => void;
+}
 export default Header;

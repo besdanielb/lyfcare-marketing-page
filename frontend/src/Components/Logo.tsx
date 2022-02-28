@@ -1,8 +1,14 @@
 import Typography from "@mui/material/Typography";
 
-const Logo: React.FC<Props> = ({ sx }) => {
+interface Props {
+  sx: any;
+  scrollToPanel?: (event: any) => void;
+}
+
+const Logo: React.FC<Props> = ({ sx, scrollToPanel }) => {
   return (
     <Typography
+      id="logo"
       variant="h6"
       noWrap
       component="div"
@@ -10,16 +16,15 @@ const Logo: React.FC<Props> = ({ sx }) => {
         ...sx,
         fontWeight: 800,
         background: "linear-gradient(to bottom right, purple, pink)",
-        "-webkit-background-clip": "text",
-        "-webkit-text-fill-color": "transparent",
+        backgroundClip: "text",
+        textFillColor: "transparent",
+        cursor: "pointer",
       }}
+      onClick={scrollToPanel ? scrollToPanel : undefined}
     >
       Lyfcare
     </Typography>
   );
 };
 
-interface Props {
-  sx: any;
-}
 export default Logo;
