@@ -15,9 +15,7 @@ const Logo: React.FC<Props> = ({ sx, scrollToPanel }) => {
       sx={{
         ...sx,
         fontWeight: 800,
-        background: "linear-gradient(to bottom right, purple, pink)",
-        backgroundClip: "text",
-        textFillColor: "transparent",
+        color: "#8273e8",
         cursor: "pointer",
       }}
       onClick={scrollToPanel ? scrollToPanel : undefined}

@@ -30,7 +30,7 @@ const Header: React.FC<Props> = ({ scrollToPanel }) => {
   return (
     <AppBar position="sticky" color="inherit">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar disableGutters sx={{ position: "relative" }}>
           <Logo
             scrollToPanel={scrollToPanel}
             sx={{
@@ -79,7 +79,15 @@ const Header: React.FC<Props> = ({ scrollToPanel }) => {
           </Box>
           <Logo
             scrollToPanel={scrollToPanel}
-            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+              position: "absolute",
+              width: "100%",
+              margin: "auto",
+              justifyContent: "center",
+              zIndex: -2,
+            }}
           />
           <Box
             sx={{

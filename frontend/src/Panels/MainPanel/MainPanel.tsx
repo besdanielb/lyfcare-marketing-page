@@ -66,7 +66,7 @@ const MainPanel: React.FC = () => {
             sx={{
               ...buttonStyles,
             }}
-            size="small"
+            size="medium"
           >
             LEARN MORE
           </Button>
