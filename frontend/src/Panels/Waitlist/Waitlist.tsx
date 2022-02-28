@@ -28,7 +28,7 @@ const Waitlist: React.FC = () => {
         display: "flex",
         justifyContent: "center",
         backgroundColor: "#fbfbfb",
-        height: { xs: 650, md: 500 },
+        height: { xs: 650, md: 500, xl: "50vh" },
         margin: 0,
       }}
     >
